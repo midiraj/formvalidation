@@ -1,0 +1,14 @@
+body{
+  background-image: url("bg.jpg");
+  -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+
+}
+#formdiv{
+  background-image: url("bg.jpg");
+}
+span{
+  color: red;
+}
