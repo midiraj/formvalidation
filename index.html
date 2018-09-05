@@ -3,16 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue"></script>
+	<!-- <script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script> -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<br>
-
 	<div id="app">
-		<component :is='componentName' @change='change'></component>
+		<component :is='componentName' @change="change"></component>
 	</div>
+
 	<template id="signUpForm">
 		<div class="col-lg-offset-4 col-lg-4">
 			<div class="panel panel-primary" id="formdiv">
@@ -20,7 +21,7 @@
 					<h3 class="panel-title">Vue.js SignUp Form Validation</h3>
 				</div>
 				<div class="panel-body">
-					<form >
+					<form @submit.prevent='submit'>
 						<div class="form-group">
 							<label for="exampleInputEmail1">Email address</label>
 							<input type="text" placeholder="Email" name="email" class="form-control" v-model='email'>
@@ -43,28 +44,28 @@
 			</div>
 		</div>
 	</template>
-		
+	
 	<template id="tnc">
-		<div class="col-lg-offset-4 col-lg-4">
-			<div class="panel panel-info">
-				<div class="panel-heading">
-					<h3 class="panel-title">Terms and Conditions</h3>
-				</div>
-				<div class="panel-body">
-					<ul class="list-group">
-						<li class="list-group-item">Cras justo odio</li>
-						<li class="list-group-item">Dapibus ac facilisis in</li>
-						<li class="list-group-item">Morbi leo risus</li>
-						<li class="list-group-item">Porta ac consectetur ac</li>
-						<li class="list-group-item">Vestibulum at eros</li>
-					</ul>
-				</div>
-				<div class="panel-footer">
-					<button @click='changeToSignUp' class="btn btn-success">Back To Signup</button>
-				</div>
+	<div class="col-lg-offset-4 col-lg-4">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h3 class="panel-title">Terms and Conditions</h3>
 			</div>
-		</div>		
+			<div class="panel-body">
+				<ul class="list-group">
+					<li class="list-group-item">Cras justo odio</li>
+					<li class="list-group-item">Dapibus ac facilisis in</li>
+					<li class="list-group-item">Morbi leo risus</li>
+					<li class="list-group-item">Porta ac consectetur ac</li>
+					<li class="list-group-item">Vestibulum at eros</li>
+				</ul>
+			</div>
+			<div class="panel-footer">
+				<button class="btn btn-success" @click='back_to_signup'>Back To Login</button>
+			</div>
+		</div>
+	</div>
 	</template>
-	<script src="vue.js"></script>
+	<script src='vue.js'></script>
 </body>
 </html>

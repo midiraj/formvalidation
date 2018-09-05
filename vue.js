@@ -12,17 +12,20 @@ Vue.component('signUpForm',{
 	watch:{
 		email(value){
 			this.eventName();
+			// this.name = 'email',
+			console.log(name);
 			this.email = value;
-			// console.log(value);
 			this.check_email(value);
 		},
 		password(value){
-			this.eventName();
+			// this.eventName();
+			this.name = 'password'
 			this.password = value;
 			this.check_pass(value);
 		},
 		confirmPassword(value){
-			this.eventName();
+			// this.eventName();
+			this.name = 'confirmPassword';
 			this.confirmPassword = value;
 			this.check_confpass(value);
 		}
@@ -35,10 +38,10 @@ Vue.component('signUpForm',{
 		check_email(value){
 			if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value))
 			 {
-			   this.msg['email']='';
+			   this.msg[this.name]='';
 			 }
 			  else{
-			  	this.msg['email']='Keep Typing We Are Waiting For Correct Email...';
+			  	this.msg[this.name]='Keep Typing We Are Waiting For Correct Email...';
 			  }
 		},
 		check_pass(value){
@@ -48,21 +51,36 @@ Vue.component('signUpForm',{
 		},
 		check_confpass(value){
 			
-			this.passwordLengthCheck(value);
+			if(this.passwordLengthCheck(value)){
+				if (value == this.password) {
+					this.msg[this.name] = "";
+					this.disableSubmitButton = false;
+					
+				}else{
+					this.msg[this.name] = "Password Doesn't Match, Please Try Again.";
+				}				
+			}
 
 		},
 		passwordLengthCheck(passwordToCheck){
 			remainChar = 6 - passwordToCheck.length;
 			if (passwordToCheck.length < 6) {
-				this.msg['password'] = 'Password Must Contain 6 Characters ' + remainChar + ' to go...';
+				this.msg[this.name] = 'Password Must Contain 6 Characters ' + remainChar + ' to go...';
 			}
 			else
 			{
-				this.msg['password'] = '';
+				this.msg[this.name] = '';
+				return true;
 			}
 		},
 		eventName(){
+			// event.preventDefault()
+			// this.$refs.input
 			name = event.target.name;
+			// name = this.$refs.input;
+		},
+		submit(){
+			alert('Great you have completed learning');
 		}
 	},
 
